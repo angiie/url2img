@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>json 打印</title>
+</head>
+<body>
+<textarea id ="output" style="width:500px;height:200px;"></textarea>
+<button onclick="formatcode();">格式化</button>
+<img id="img" src="">
+<script type="text/javascript">
+function formatcode(){
+  var textarea = document.getElementById("output");
+  var text = textarea.value;
+  if(text){
+    document.getElementById("img").src="http://localhost:3000/img?url="+text;
+  }
+}
+</script>
+</body>
+</html>
