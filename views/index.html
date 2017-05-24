@@ -8,9 +8,9 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+    <link rel="icon" href="/favicon.ico">
 
-    <title>Sticky Footer Template for Bootstrap</title>
+    <title>微信公众号截图工具</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="http://v3.bootcss.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="http://v3.bootcss.com/assets/js/ie-emulation-modes-warning.js"></script>
-
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -39,15 +39,15 @@
       <div class="page-header">
         <h1>微信公众号截图工具</h1>
       </div>
+      <div>
         <div class="form-group">
           <label for="url">请输入URL</label>
           <input type="text" class="form-control" id="output" placeholder="请输入URL">
-          <button type="btn" class="btn btn-success" onclick="getImage();">确定</button>
         </div>
+        <button type="btn" class="btn btn-success" onclick="getImage();">确定</button>
+      </div>
+      <img id="loading" src="/loading.gif" style="display:none;">
       <img id="img" src="">
-    </div>
-    <div>
-
     </div>
 
     <footer class="footer">
@@ -59,10 +59,17 @@
       function getImage(){
         var textarea = document.getElementById("output");
         var text = textarea.value;
-        if(text){
+        if(text && text.length > 0){
+          $("#loading").show();
           document.getElementById("img").src="/img?url="+text;
         }
       }
+     $(document).ready(function(){
+       $('#img').load(function(){
+        // 加载完成
+        $("#loading").hide();
+       });
+     });
     </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="http://v3.bootcss.com/assets/js/ie10-viewport-bug-workaround.js"></script>
